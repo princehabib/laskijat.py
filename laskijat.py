@@ -1,6 +1,5 @@
 class Laskija:
     """Luokka, joka toteuttaa eri laskutoimituksia.
-
     Julkiset metodit:
         summaa(Union[int, float], Union[int, float])
         kerro(Union[int, float], Union[int, float])
@@ -8,7 +7,6 @@ class Laskija:
 
     def summaa(self, a, b):
         """Palauttaa kahden luvun summan.
-
         :param a: summan ensimmäinen luku
         :type a: Union[int, float]
         :param b: summan toinen luku
@@ -20,7 +18,6 @@ class Laskija:
 
     def kerro(self, a, b):
         """Palauttaa kahden luvun tulon.
-
         :param a: tulon ensimmäinen luku
         :type a: Union[int, float]
         :param b: tulon toinen luku
@@ -36,8 +33,43 @@ class Laskija:
 
 ### Lisää MonenLaskija ja argumenttien_tulostaja tähän.
 
+class MonenLaskija(Laskija):
+    """Luokka, joka toteuttaa eri laskutoimituksia.
+    Julkiset metodit:
+        summaa(Union[int, float])
+        kerro(Union[int, float])
+    """
+    def summaa(self, *args):
+        """Palauttaa monta luvun summan.
+        :param args: summan kaikki luku
+        :type args: Union[int, float]
+        :return: lukujen args:ssa summa
+        :rtype: Union[int, float]
+        """
+        return sum(args)
+    
+    def kerro(self, *args):
+        """Palauttaa monta luvun tulon.
+        :param args: tulon kaikki luku
+        :type args: Union[int, float]
+        :return: lukujen args:ssa tulo
+        :rtype: Union[int, float]
+        """
+        tulo = 1
+        for luku in args:
+            tulo *= luku
+        return tulo
 
-
+def argumenttien_tulostaja(**kwargs):
+    """Tulostaa sanakirjan sisällöt.
+        :param kwargs: tlostaa kaikki sanakirjan sisällöt
+        :type kwargs: Union[str ,int, float]
+        :return: kaikki sanakirjan sisällöt
+        :rtype: Union[str]
+        """
+    for avainsana, arvo in kwargs.items():
+        print(f'Argumentin "{avainsana}" arvo on {arvo}.')
+        
 
 ### Seuraavat rivit tekevät tarkistustulostukset. Älä koske niihin.
 
